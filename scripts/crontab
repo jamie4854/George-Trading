@@ -1,0 +1,40 @@
+# George — routine schedule
+#
+# Install (from the repo root):
+#     crontab scripts/crontab
+# Inspect:
+#     crontab -l
+#
+# Cron expressions below are in UTC (TZ=UTC). The paired BST time is shown
+# in the comment for readability. NOTE: BST is UTC+1 only during British
+# Summer Time (late Mar → late Oct). Outside of BST, local UK clock time
+# will be one hour earlier than shown. US market hours also shift with
+# DST, so during US winter (EST) these UTC times land one hour earlier
+# than the intended point in the US session — review and update at the
+# DST changeovers, or switch TZ to America/New_York if you prefer the
+# schedule to track US market hours year-round.
+
+TZ=UTC
+REPO_ROOT=/home/user/George-Trading
+RUN=$REPO_ROOT/scripts/run-routine.sh
+
+# Routine 1 — Pre-Market Brief        (13:00 BST / 12:00 UTC, Mon–Fri)
+0  12 * * 1-5 $RUN routine-1-premarket
+
+# Routine 2 — Market Open Scan        (14:30 BST / 13:30 UTC, Mon–Fri)
+30 13 * * 1-5 $RUN routine-2-open
+
+# Routine 3 — Mid-Morning Scan        (16:30 BST / 15:30 UTC, Mon–Fri)
+30 15 * * 1-5 $RUN routine-3-midmorning
+
+# Routine 4 — Mid-Afternoon Scan      (18:30 BST / 17:30 UTC, Mon–Fri)
+30 17 * * 1-5 $RUN routine-4-midafternoon
+
+# Routine 5 — Pre-Close Scan          (20:30 BST / 19:30 UTC, Mon–Fri)
+30 19 * * 1-5 $RUN routine-5-preclose
+
+# Routine 6 — End of Day              (21:15 BST / 20:15 UTC, Mon–Fri)
+15 20 * * 1-5 $RUN routine-6-endofday
+
+# Routine 7 — Overnight Research      (23:00 BST / 22:00 UTC, Mon–Fri)
+0  22 * * 1-5 $RUN routine-7-overnight
