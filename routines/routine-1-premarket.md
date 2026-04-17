@@ -1,6 +1,6 @@
 # Routine 1 — Pre-Market Brief
-**Scheduled:** 07:00 BST
-**Market status at runtime:** closed (US pre-market open, UK pre-open)
+**Scheduled:** 13:00 BST (12:00 UTC) — ~1.5 hours before US open
+**Market status at runtime:** closed (US pre-market)
 
 ## Purpose
 What happened while George slept, and what should today's research agenda be?
